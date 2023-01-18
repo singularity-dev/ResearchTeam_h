@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chongan.dao.teacherMapper">
+
+    <select id="getAll" resultType="teacher">
+        select * from researchteam.teacher
+    </select>
+
+    <select id="getTeacherNum" resultType="int">
+        select count(*) from researchteam.teacher
+    </select>
+
+    <select id="getPageTeacher" resultType="teacher" parameterType="int">
+        select * from researchteam.teacher
+        order by name
+        limit #{page}, 14
+    </select>
+
+    <select id="getTeacherbyNum" resultType="teacher" parameterType="int">
+        select * from researchteam.teacher
+        where teacherNo=#{num}
+    </select>
+
+    <select id="getLateTeacher" resultType="teacher">
+        select * from researchteam.teacher
+        order by name
+        limit 5
+    </select>
+
+    <select id="getTeacherbyEmail" parameterType="String" resultType="teacher">
+        select * from researchteam.teacher
+        where email=#{Email}
+    </select>
+
+    <insert id="insert" parameterType="teacher">
+        insert into researchteam.teacher(name, level, email, introduction, point, education, experience, award, research, litIntro) VALUES
+        (#{name}, #{level}, #{email}, #{introduction}, #{point}, #{education}, #{experience}, #{award}, #{research}, #{litIntro})
+    </insert>
+
+    <delete id="deleteByNum" parameterType="int">
+        delete from researchteam.teacher
+        where teacherNo=#{num}
+    </delete>
+
+    <update id="updateTeacher" parameterType="teacher">
+        update researchteam.teacher
+        set name=#{name}, level=#{level}, email=#{email}, introduction=#{introduction}, point=#{point}, experience=#{experience},
+            award=#{award}, research=#{research}, litIntro=#{litIntro}
+        where teacherNo=#{teacherNo}
+    </update>
+</mapper>

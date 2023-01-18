@@ -1,0 +1,117 @@
+.rightCont .wp_article_list .list_item{height: 47px;font-size: 16px;line-height: 46px;padding: 0 10px;box-sizing: border-box;}
+.rightCont  .wp_article_list .list_item .Article_Index{display: none}
+
+#header{ padding:0 22px;}
+.head{width:1280px;margin:0 auto;height:122px;display: flex;align-items: flex-start;justify-content: space-between;padding: 0 0 23px 0;position:relative;}
+.head .left{display: flex;align-items: flex-start;}
+.head .left .logoImg{width:95px}
+.head .left .logoImg img{width:100%}
+.head .left .sitetitle{width:650px;margin: 25px 0 0 7px;height: 70px}
+.head .left .sitetitle img{width:100%;vertical-align:sub;}
+.head .left .sitetitle .chain{display:inline;margin-left:15px;font-weight: 600;color: #1e8c00;font-size: 36px;}
+.head .left .sitetitle .eng{color:#58585a;font-size: 19px;font-weight: 300;padding: 4px 0 0;}
+
+.head .headbg{width:500px;height: 110px}
+.head .headbg img{width:100%;height:100%}
+
+.head .right{display: flex;align-items: center;}
+.head .right .icon-dianhua{color: rgba(89, 202, 48, 0.69);margin-right: 6px;}
+.head .right .contPhone{margin-right:15px}
+.head .right .wp_nav .nav-item{margin-top: 13px;border-right: 1px rgba(76, 202, 48, 0.62) solid;font-size: 14px}
+.head .right .wp_nav .nav-item:last-child{border:none}
+.head .right .wp_nav .nav-item a span.item-name{padding:0 10px;color:rgba(56, 114, 97);}
+
+.wrapper.nav{width:1280px;}
+.navbar .navbox .wp_nav {display: flex;justify-content: space-around;}
+.navbar .navbox .wp_nav::after{content:none !important;}
+
+.mbanner{width:100%;height:460px}
+.mbanner .slider-nav{display:none;}
+
+
+div{box-sizing: border-box;}
+.flexStyle{display: flex;justify-content: space-between;align-items: flex-start;}
+
+.allCont{display: flex;}
+.mainCont{width: 620px;margin-right:40px}
+.mainCont .cont .conts{display: flex}
+.mainCont .cont .conts .imgs{width: 390px}
+.mainCont .cont .conts .imgs img{max-width: 100%}
+.mainCont .cont .conts .content{flex: 1}
+.mainCont .cont .tt,.rightCont .cont .tt,.leftCont .cont .tt{ height: 50px;line-height: 50px;font-size: 16px;font-weight: bold;border-bottom: 2px #ccc solid;}
+.mainCont .cont .tt i,.rightCont .cont .tt i,.leftCont .cont .tt i{color: rgba(77, 182, 72, 0.44);font-size: 25px;vertical-align: middle;margin-right: 10px;}
+.mainCont .cont .tt .tit,.rightCont .cont .tt .tit,.leftCont .cont .tt .tit{border-bottom: 2px rgba(36, 241, 0, 0.27) solid;height: 50px;padding-right: 10px;}
+.mainCont .cont .tt .tit .title,.rightCont .cont .tt .tit .title,.leftCont .cont .tt .tit .title{vertical-align: middle;font-size: 18px;}
+.mainCont .cont .tt .more_btn a,.rightCont .cont .tt .more_btn a,.leftCont .cont .tt .more_btn a{ font-size: 12px;color: #ccc;}
+
+.mainCont .cont .con{display: flex;padding-top: 20px;}
+.mainCont .cont .con td{display: flex}
+.mainCont .cont .con td a img{width: 320px;margin-right: 10px;height: 217px;}
+.mainCont .cont .con td a { font-size: 16px;color: #434343;line-height: 28px;}
+.mainCont .cont .con td .content{
+  display: -webkit-box;
+		    -webkit-box-orient: vertical;
+		    -webkit-line-clamp: 8;
+		    overflow: hidden;
+		    word-wrap: break-word;
+}
+
+.leftCont{width: 620px; margin-right:40px}
+.rightCont{width: 620px;}
+.rightCont .cont td, .leftCont .cont td{height: 46px;display: flex;justify-content: space-between;padding: 0 10px;font-size: 16px;align-items: center;border-bottom: 1px #f0f0f0 dashed;}
+.rightCont .cont td .left, .leftCont .cont td .left{display: flex;align-items: center}
+.rightCont .cont td .left .point, .leftCont .cont td .left .point{width: 5px;height: 5px; background-color: rgba(8, 241, 0, 0.27);margin-right:10px}
+.rightCont .cont td .time, .leftCont .cont td .time{ color: #999;}
+#wp_news_w11{height: 235px;overflow: hidden}
+
+
+.list2 tbody{display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;padding: 0 10px 60px;}
+.list2 tbody tr{  width: 480px;margin-bottom: 60px;}
+.list2 tbody tr td{clear: both}
+.people{display: flex}
+.list2 tbody tr td .left{width: 235px;height: 280px;float: left;}
+.list2 tbody tr td .left img{max-width: 235px;max-height: 280px;width: auto;height: auto;margin: 0 auto;display: block;}
+.list2 tbody tr td .right{width: 245px;height: 280px;float: left;background-color: #f5f5f5}
+.list2 tbody tr td .right .tit{width:245px;height: 50px;line-height: 50px;padding-left:10px;
+  font-size: 24px; background-color: rgba(64, 241, 0, 0.3);box-sizing: border-box;}
+.list2 tbody tr td .right .tit a {color:#fff}
+.list2 tbody tr td .right .rightCont{width: 100%;font-size: 14px;line-height: 25px;padding: 10px;}
+
+
+
+/* 友情链接 */
+.webcontact{display: flex;height: 60px;align-items: center;}
+.webcontact>p{font-size: 16px;}
+.webcontact ul{display: flex;align-items: center}
+.webcontact ul li{font-size: 14px;}
+.webcontact ul .nav-item:hover a {color: rgba(83, 174, 76, 0.38);}
+
+.foot td{line-height: 25px}
+
+/* 轮播图箭头 */
+.container {
+	position: relative;
+}
+
+.container .arrow {
+	position: absolute;
+	top: 40%;
+	color: green;
+	padding:0px 14px;
+	border-radius: 50%;
+	font-size: 50px;
+	z-index: 2;
+	display: none;
+}
+.container .arrow_left {
+	left: 10px;
+}
+.container .arrow_right {
+	right: 10px;
+}
+.container:hover .arrow {
+	display: block;
+}
+.container .arrow:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}

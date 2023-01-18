@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chongan.dao.newsMapper">
+    <select id="getLateNews" resultType="news">
+        select * from researchteam.news
+        order by date desc
+        limit 5
+    </select>
+
+    <select id="getNewsNum" resultType="int">
+        select count(*) from researchteam.news
+    </select>
+
+    <select id="getPageNews" resultType="news" parameterType="int">
+        select * from researchteam.news
+        order by date desc
+        limit #{page},14
+    </select>
+
+    <select id="getNewsbyNum" resultType="news" parameterType="int">
+        select * from researchteam.news
+        where newsNo=#{num}
+    </select>
+
+    <select id="getAllNews" resultType="news">
+        select * from researchteam.news
+    </select>
+
+    <insert id="insert" parameterType="news">
+        insert into researchteam.news(date, author, title, content) VALUES
+        (#{date}, #{author}, #{title}, #{content})
+    </insert>
+
+    <delete id="deleteByNum" parameterType="int">
+        delete from researchteam.news
+        where newsNo=#{newsNo}
+    </delete>
+
+    <update id="updateNews" parameterType="news">
+        update researchteam.news
+        set date=#{date}, author=#{author}, title=#{title}, content=#{content}
+        where newsNo=#{newsNo}
+    </update>
+</mapper>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>青科人才实验室 | 后台管理系统</title>
+
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Nav Begin -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="manaIndex.html" class="nav-link">主页</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Nav End -->
+
+  <!-- Sidebar Begin -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/backIndex" class="brand-link">
+      <span class="brand-text font-weight-light">青科人才实验室</span>
+    </a>
+
+    <div class="sidebar">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="/backIndex" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                帮助文档
+                <span class="right badge badge-danger">必看</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/backUser" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                账户密码管理
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/backBigImg" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                首页大图管理
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/backNews" class="nav-link">
+              <i class="nav-icon fas fa-temperature-high"></i>
+              <p>
+                新闻动态管理
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/backProject" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                研究成果管理
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/backProject" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>项目管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/backPaper" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>论文管理</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="/backTeacher" class="nav-link active">
+              <i class="nav-icon fas fa-user-astronaut"></i>
+              <p>
+                团队成员管理
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/backTeacher" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>教师管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>学生管理</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- Sidebar End -->
+
+  <!-- Content Begin -->
+  <div class="content-wrapper">
+    
+    <!-- Content Header Begin -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">教师管理</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/backIndex">主页</a></li>
+              <li class="breadcrumb-item"><a href="/backTeacher">团队成员管理</a></li>
+              <li class="breadcrumb-item active">教师管理</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content Header End -->
+
+    <!-- Main Content Begin -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                教师资料添加
+              </div>
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label for="level">级别</label>
+                    <input type="text" class="form-control" id="level" placeholder="Enter level">
+                  </div>
+                  <div class="form-group">
+                    <label fot="litIntro">简介（小）</label>
+                    <textarea id="litIntro" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label fot="introduction">简介（大）</label>
+                    <textarea id="introduction" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label fot="point">研究方向</label>
+                    <textarea id="point" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label fot="education">教育经历</label>
+                    <textarea id="education" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label fot="experience">工作经历</label>
+                    <textarea id="experience" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label fot="award">受到奖励</label>
+                    <textarea id="award" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label fot="research">研究成果</label>
+                    <textarea id="research" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label id="message" teacherid="-1"></label>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" id="addTeacher">提交</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card card-primary">
+              <div class="card-header">
+                教师照片提交
+              </div>
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="findEmail">邮箱</label>
+                    <input type="text" class="form-control" id="findEmail" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="teacherImg">照片</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="teacherImg">
+                        <label class="custom-file-label" for="teacherImg">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" id="addTeacherImg">提交</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>姓名</th>
+                    <th>级别</th>
+                    <th>简介</th>
+                    <th>邮箱</th>
+                    <th>修改</th>
+                    <th>删除</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  </tbody>
+
+                  <tfoot>
+                  <tr>
+                    <th>姓名</th>
+                    <th>级别</th>
+                    <th>简介</th>
+                    <th>邮箱</th>
+                    <th>修改</th>
+                    <th>删除</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Content End -->
+  </div>
+  <!-- Content End -->
+  
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-inline">
+      Power by singularity v0.1
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> 
+  </footer>
+</div>
+
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="js/bs-custom-file-input.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "ajax": "/getAllTeacherBack",
+      "columns": [
+        {"data": "name"},
+        {"data": "level"},
+        {"data": "litIntro"},
+        {"data": "email"},
+        {
+          "data": "teacherNo",
+          "render": function (data, type) {
+            return "  <button teacherid=\"" + data + "\" type=\"button\" class=\"btn btn-block btn-danger add\" style='background-color: cornflowerblue; border-color: cornflowerblue'>修改</button>";
+          }
+        },
+        {
+          "data": "teacherNo",
+          "render": function (data, type) {
+            return "  <button teacherid=\"" + data + "\" type=\"button\" class=\"btn btn-block btn-danger del\">删除</button>";
+          }
+        }
+      ]
+    });
+
+    $('#example2 tbody').on('click', '.add', function() {
+      var id = $(this).attr("teacherid");
+      $.ajax({
+        url: "/getTeacher/" + id,
+        type: "post",
+        success: function(resData) {
+          let resObj = JSON.parse(resData).teacher;
+          $("#name").val(resObj.name);
+          $("#level").val(resObj.level);
+          $("#litIntro").val(resObj.litIntro);
+          $("#email").val(resObj.email);
+          $("#introduction").val(resObj.introduction);
+          $("#point").val(resObj.point);
+          $("#education").val(resObj.education);
+          $("#experience").val(resObj.experience);
+          $("#award").val(resObj.award);
+          $("#research").val(resObj.research);
+          $("#message").text("正在修改！(点击停止修改）");
+          $("#message").attr("teacherid", resObj.teacherNo);
+        }
+      });
+    });
+
+    $('#message').click(function() {
+      if($("#message").attr("teacherid") !== "-1") {
+        $("#message").text("");
+        $("#message").attr("teacherid", "-1");
+        $("#name").val("");
+        $("#level").val("");
+        $("#litIntro").val("");
+        $("#email").val("");
+        $("#introduction").val("");
+        $("#point").val("");
+        $("#education").val("");
+        $("#experience").val("");
+        $("#award").val("");
+        $("#research").val("");
+      }
+    });
+
+    $('#addTeacher').click(function () {
+      if($("#message").attr("teacherid") === "-1") {
+        $.ajax({
+          url: "/addTeacher",
+          type: "post",
+          data: {
+            "name": $('#name').val(),
+            "level": $('#level').val(),
+            "litIntro": $('#litIntro').val(),
+            "email": $('#email').val(),
+            "introduction": $('#introduction').val(),
+            "point": $('#point').val(),
+            "education": $('#education').val(),
+            "experience": $('#experience').val(),
+            "award": $('#award').val(),
+            "research": $('#research').val(),
+            "teacherNo": '-1'
+          }
+        });
+      } else {
+        $.ajax({
+          url: "/updateTeacher",
+          type: "post",
+          data: {
+            "name": $('#name').val(),
+            "level": $('#level').val(),
+            "litIntro": $('#litIntro').val(),
+            "email": $('#email').val(),
+            "introduction": $('#introduction').val(),
+            "point": $('#point').val(),
+            "education": $('#education').val(),
+            "experience": $('#experience').val(),
+            "award": $('#award').val(),
+            "research": $('#research').val(),
+            "teacherNo": $("#message").attr("teacherid")
+          }
+        });
+      }
+    });
+
+    $('#addTeacherImg').click(function () {
+      var formData = new FormData();
+      formData.append("fEmail", $('#findEmail').val());
+      formData.append("teacherImg", $('#teacherImg')[0].files[0]);
+      $.ajax({
+        url: "/addTeacherImg",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+      });
+    });
+
+    $('#example2 tbody').on('click', '.del', function() {
+      var data = $(this).attr("teacherid");
+      $.ajax({
+        url: "/deleteTeacher/" + data,
+        type: "post",
+        success: function(resData) {
+          if(resData==1)
+            alert("删除成功");
+          else
+            alert("删除错误，请勿重复操作");
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

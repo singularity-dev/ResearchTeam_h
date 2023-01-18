@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chongan.dao.paperMapper">
+
+    <select id="getLatePaper" resultType="paper">
+        select * from researchteam.paper
+        where type='paper'
+        order by date desc
+        limit 5
+    </select>
+
+    <select id="getAllPaper" resultType="paper">
+        select * from researchteam.paper
+        where type='paper'
+    </select>
+
+    <select id="getAllPatent" resultType="paper">
+        select * from researchteam.paper
+        where type='patent'
+    </select>
+
+    <select id="getAll" resultType="paper">
+        select * from researchteam.paper
+    </select>
+
+    <select id="getPaperbyId" resultType="paper" parameterType="String">
+        select * from researchteam.paper
+        where paperNo=#{paperNo}
+    </select>
+
+    <insert id="insert" parameterType="paper">
+        insert into researchteam.paper(content, title, date, type) VALUES
+        (#{content}, #{title}, #{date}, #{type})
+    </insert>
+
+    <delete id="deleteByNum" parameterType="int">
+        delete from researchteam.paper
+        where paperNo=#{num}
+    </delete>
+
+    <update id="updatePaper" parameterType="paper">
+        update researchteam.paper
+        set content = #{content}, title=#{title}, date=#{date}, type=#{type}
+        where paperNo=#{paperNo}
+    </update>
+</mapper>

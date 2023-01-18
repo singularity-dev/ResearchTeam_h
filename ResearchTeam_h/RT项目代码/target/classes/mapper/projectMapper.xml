@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chongan.dao.projectMapper">
+
+    <select id="getLateProject" resultType="project">
+        select * from researchteam.project
+        order by dateBegin desc
+        limit 5
+    </select>
+
+    <select id="getVProject" resultType="project">
+        select * from researchteam.project
+        where type='v'
+    </select>
+
+    <select id="getHProject" resultType="project">
+        select * from researchteam.project
+        where type='h'
+    </select>
+
+    <select id="getAllProject" resultType="project">
+        select * from researchteam.project
+    </select>
+
+    <select id="getProjectByid" parameterType="int" resultType="project">
+        select * from researchteam.project
+        where projectNo=#{id}
+    </select>
+
+    <insert id="insert" parameterType="project">
+        insert into researchteam.project(content, title, type, dateBegin, dateEnd, state) VALUES
+        (#{content}, #{title}, #{type}, #{dateBegin}, #{dateEnd}, #{state})
+    </insert>
+
+    <delete id="deleteByNum" parameterType="int">
+        delete from researchteam.project
+        where projectNo=#{num}
+    </delete>
+
+    <update id="updateProject" parameterType="project">
+        update researchteam.project
+        set content=#{content}, title=#{title}, type=#{type}, dateBegin=#{dateBegin}, dateEnd=#{dateEnd}, state=#{state}
+        where projectNo=#{projectNo}
+    </update>
+</mapper>

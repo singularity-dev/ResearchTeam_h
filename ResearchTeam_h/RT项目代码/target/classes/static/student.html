@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<link rel="icon" href="img/icon.ico" type="image/x-icon"/>
+
+    <title>团队学生</title>
+
+    <link type="text/css" rel="stylesheet" href="css/system.css">
+	<link type="text/css" rel="stylesheet" href="css/iconfont.css">
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link type="text/css" rel="stylesheet" href="css/main.css">
+	<link type="text/css" rel="stylesheet" href="css/system.css">
+	<link type="text/css" rel="stylesheet" href="css/nav.css">
+    <link type="text/css" rel="stylesheet" href="css/simplenews.css">
+
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/navJS.js"></script>
+	<script>
+		$(document).ready(function () {
+			var page = 1;
+			var MaxPage = 1;
+			$.ajax({
+				type: 'get',
+				url: '/getStudentNum',
+				cache: false,
+				success: function(resData) {
+					MaxPage = Math.ceil(resData/14);
+					$("#all_count").text(resData);
+					$("#first").text(page + "/" + MaxPage);
+				}
+			});
+			$.ajax({
+				type: 'get',
+				url: '/getPageStudent/1',
+				cache: false,
+				success: function(resData) {
+					let resObj = JSON.parse(resData).pageList;
+					for(let i = 0; i < resObj.length; i++) {
+						var temp = "<li class=\"list_item i1\"><div class=\"fields pr_fields\">" +
+								"<span class=\"Article_Index\">" + resObj[i].teacherNo + "</span>" +
+								"<span class=\"Article_Title\"><a\n" +
+								"href=\"\\specMember\\" + resObj[i].teacherNo + "\"" +
+								"target=\"_blank\">" +
+								resObj[i].name + "</a>" +
+								"</span></div>" +
+								"</li>"
+						$("#news").append(temp)
+					}
+				}
+			});
+			$("#next").click(function() {
+				if(page < MaxPage) {
+					$.ajax({
+						type: 'get',
+						url: '/getPageStudent/' + (page+1),
+						cache: false,
+						success: function(resData) {
+							page = page+1;
+							$("#news").empty();
+							$("#first").text(page + "/" + MaxPage);
+							let resObj = JSON.parse(resData).pageList;
+							for(let i = 0; i < resObj.length; i++) {
+								var temp = "<li class=\"list_item i1\"><div class=\"fields pr_fields\">" +
+										"<span class=\"Article_Index\">" + resObj[i].teacherNo + "</span>" +
+										"<span class=\"Article_Title\"><a\n" +
+										"href=\"\\specMember\\" + resObj[i].teacherNo + "\"" +
+										"target=\"_blank\">" +
+										resObj[i].name + "</a>" +
+										"</span></div>" +
+										"</li>"
+								$("#news").append(temp)
+							}
+						}
+					});
+				}
+			});
+			$("#prev").click(function() {
+				if(page > 1) {
+					$.ajax({
+						type: 'get',
+						url: '/getPageStudent/' + (page-1),
+						cache: false,
+						success: function(resData) {
+							page = page-1;
+							$("#news").empty();
+							$("#first").text(page + "/" + MaxPage);
+							let resObj = JSON.parse(resData).pageList;
+							for(let i = 0; i < resObj.length; i++) {
+								var temp = "<li class=\"list_item i1\"><div class=\"fields pr_fields\">" +
+										"<span class=\"Article_Index\">" + resObj[i].teacherNo + "</span>" +
+										"<span class=\"Article_Title\"><a\n" +
+										"href=\"\\specMember\\" + resObj[i].teacherNo + "\"" +
+										"target=\"_blank\">" +
+										resObj[i].name + "</a>" +
+										"</span></div>" +
+										"</li>"
+								$("#news").append(temp)
+							}
+						}
+					});
+				}
+			});
+			// 轮播图
+			var imgCount = 1;
+			$(".arrow_left").click(function () {
+				var noneId = "#img0" + imgCount.toString();
+				imgCount = imgCount + 1;
+				if(imgCount > 3)
+					imgCount = 1;
+				var blockId = "#img0" + imgCount.toString();
+				console.log(blockId);
+				console.log(noneId);
+				$(noneId).css("display", "none");
+				$(blockId).css("display", "block");
+			});
+			$(".arrow_right").click(function () {
+				var noneId = "#img0" + imgCount.toString();
+				imgCount = imgCount - 1;
+				if(imgCount < 1)
+					imgCount = 3;
+				var blockId = "#img0" + imgCount.toString();
+				console.log(blockId);
+				console.log(noneId);
+				$(noneId).css("display", "none");
+				$(blockId).css("display", "block");
+			});
+			function autoPlay() {
+				setInterval(function() {
+					var noneId = "#img0" + imgCount.toString();
+					imgCount = imgCount + 1;
+					if(imgCount > 3)
+						imgCount = 1;
+					var blockId = "#img0" + imgCount.toString();
+					console.log(blockId);
+					console.log(noneId);
+					$(noneId).css("display", "none");
+					$(blockId).css("display", "block");
+				}, 8000);
+			}
+			autoPlay();
+		})
+	</script>
+</head>
+
+<body>
+	<!--Start||head-->
+	<div class="wrapper header" id="header" style="padding-right:22px">
+		<div class="head">
+			<div class="left">
+				<div class="sitetitle">
+					<img src="img/headImg01.jpg" alt="website_title">
+				</div>
+			</div>
+			<div class="headbg">
+				<img src="img/headImg02.png">
+			</div>
+			<div class="right">
+				<div class="navbox">
+					<div id="wp_nav_w98">
+						<ul class="wp_nav"
+							data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
+							<li class="nav-item i1 ">
+								<a href="#" title="中文" target="_self"><span
+										class="item-name">中文</span></a><i class="mark" style="opacity: 1;"></i>
+
+							</li>
+							<li class="nav-item i2 ">
+								<a href="#" title="English"
+									target="_self"><span class="item-name">English</span></a><i class="mark"
+									style="opacity: 1;"></i>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End||head-->
+
+    <!--Start||nav-->
+	<div class="wrapper nav" id="nav" style="background-color: rgba(56, 114, 97)">
+		<div class="inner">
+			<!--Start||导航-->
+			<div class="navbar">
+				<div class="navbox">
+					<div id="wp_nav_w1">
+						<ul class="wp_nav"
+							data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;-1&#39;, opacity_sub: &#39;-1&#39;, dWidth: &#39;0&#39;}">
+							<li class="nav-item i1 " style="background: none;">
+								<a href="\index" title="首页" target="_self"><span
+										class="item-name">首页</span></a><i class="mark"></i>
+							</li>
+
+							<li class="nav-item i2 " style="background: none;">
+								<a href="\about" title="研究团队简介"
+								   target="_self"><span class="item-name">关于我们</span></a><i class="mark"></i>
+							</li>
+
+							<li class="nav-item i3 " style="background: none;">
+								<a href="\news" title="新闻动态"
+								   target="_self"><span class="item-name">新闻动态</span></a><i class="mark"></i>
+							</li>
+
+
+							<li class="nav-item i5 " style="background: none;">
+								<a href="\projectw" title="研究项目"
+								   target="_self"><span class="item-name">研究项目</span></a><i class="mark"></i>
+								<ul class="sub-nav" style="width: 92px; height: 84px; top: 50px; left: 0px; border: 0px;"">
+									<li class="nav-item i5-1 " style="display: block; width: 100%; background: none;">
+										<a href="\projectw" title="横向项目"
+										   target="_self" style="display: block; width: auto;"><span
+												class="item-name">横向项目</span></a><i class="mark"></i>
+									</li>
+									<li class="nav-item i5-2 " style="display: block; width: 100%; background: none;">
+										<a href="\projecth" title="纵向项目"
+										   target="_self" style="display: block; width: auto;"><span
+												class="item-name">纵向项目</span></a><i class="mark"></i>
+
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-item i6 " style="background: none;">
+								<a href="\paper" title="研究成果"
+								   target="_self"><span class="item-name">研究成果</span></a><i class="mark"></i>
+								<ul class="sub-nav" style="width: 128px; height: 84px; top: 50px; left: 0px; border: 0px;"">
+									<li class="nav-item i6-1 " style="display: block; width: 100%; background: none;">
+										<a href="paper.html" title="论文"
+										   target="_self" style="display: block; width: auto;"><span
+												class="item-name">论文</span></a><i class="mark"></i>
+									</li>
+									<li class="nav-item i6-2 " style="display: block; width: 100%; background: none;">
+										<a href="\patent" title="专利"
+										   target="_self" style="display: block; width: auto;"><span
+												class="item-name">专利</span></a><i class="mark"></i>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-item i7 " style="background: rgba(0, 0, 0, 0.2);">
+								<a href="\teacher" title="团队成员"
+								   target="_self"><span class="item-name">团队成员</span></a><i class="mark"></i>
+								<ul class="sub-nav" style="width: 128px; height: 84px; top: 50px; left: 0px; border: 0px;"">
+									<li class="nav-item i7-1 " style="display: block; width: 100%; background: none;">
+										<a href="\teacher" title="团队老师"
+										   target="_self" style="display: block; width: auto;"><span
+												class="item-name">团队老师</span></a><i class="mark"></i>
+									</li>
+									<li class="nav-item i7-2 " style="display: block; width: 100%; background: none;">
+										<a href="\student" title="团队学生"
+										   target="_self" style="display: block; width: auto;"><span
+												class="item-name">团队学生</span></a><i class="mark"></i>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-item i8 " style="background: none;">
+								<a href="\contact" title="联系我们"
+								   target="_self"><span class="item-name">联系我们</span></a><i class="mark"></i>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+			<!--End||导航-->
+		</div>
+	</div>
+
+	<!-- Start||image-->
+	<div class="wrapper">
+		<div class="inner">
+			<!-- banner -->
+			<div class="mbanner" id="banner">
+				<div class="container">
+					<img alt="img01"
+						 id="img01"
+						 src="img/bigImg01.jpg"
+						 width="1280px" height="460px"
+						 style="display: block">
+					<img alt="img02"
+						 id="img02"
+						 src="img/bigImg02.jpg"
+						 width="1280px" height="460px"
+						 style="display: none">
+					<img alt="img03"
+						 id="img03"
+						 src="img/bigImg03.jpg"
+						 width="1280px" height="460px"
+						 style="display: none">
+					<a href="javascript:;" class="arrow arrow_left">&lt;</a>
+					<a href="javascript:;" class="arrow arrow_right">&gt;</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end||image -->
+
+	<!--End||nav-->
+
+    <!--Start||content-->
+    <div class="wrapper" id="container">
+        <div class="inner">
+            <div class="col_menu">
+                <div class="col_menu_head">
+                    <h3 class="col_name" portletmode="simpleColumnAnchor">
+                        <span class="col_name_text">
+                            <span class="Column_Anchor">团队成员</span>
+                        </span>
+                    </h3>
+                </div>
+
+                <div class="col_menu_con">
+                    <div class="col_list" portletmode="simpleColumnList">
+                        <div id="wp_listcolumn_w4">
+                            <ul class="wp_listcolumn">
+                                <li class="wp_column column-1">
+                                    <a href="\teacher" title="新闻动态"
+									   target="_self"><span class="column-name">团队老师</span></a>
+                                </li>
+
+                                <li class="wp_column column-2 selected">
+                                    <a href="#" title="新闻动态"
+                                        class="selected" target="_self"><span class="column-name">团队学生</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col_news">
+                <div class="col_news_box">
+                    <div class="col_news_head">
+                        <ul class="col_metas clearfix" portletmode="simpleColumnAttri">
+
+                            <li class="col_title">
+                                <h2>团队学生</h2>
+                            </li>
+                            <li class="col_path">
+                                <span class="path_name">当前位置：</span><a
+									href="\index" target="_self">首页&nbsp;|&nbsp;</a>
+                                    <a href="\teacher" target="_self">团队成员&nbsp;|&nbsp;</a>
+                                    <a href="\student" target="_self">团队学生</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col_news_con list1" style="display: block;">
+                        <div class="col_news_list" portletmode="simpleList">
+                            <div id="wp_news_w6">
+
+                                <ul id="news" class="wp_article_list">
+
+                                </ul>
+                            </div>
+
+                            <div id="wp_paging_w6">
+                                <ul class="wp_paging clearfix">
+                                    <li class="pages_count">
+                                        <span class="per_page">
+                                            每页&nbsp;<em class="per_count">14</em>&nbsp;记录&nbsp;
+                                        </span>
+                                        <span class="all_count">
+                                            总共&nbsp;<em id="all_count" class="all_count"></em>&nbsp;记录&nbsp;
+                                        </span>
+                                    </li>
+                                    <li class="page_nav">
+                                        <a id="first" class="first" href="javascript:void(0);" target="_self"></a>
+                                        <a id="prev" class="prev" href="javascript:void(0);"
+                                            target="_self"><span>&lt;&lt;上一页</span></a>
+                                        <a id="next" class="next" href="javascript:void(0);"
+                                            target="_self"><span>下一页&gt;&gt;</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!--End||content-->
+
+
+	<!--Start||footer-->
+	<div class="wrapper" style="background-color:#f5f5f5">
+		<div class="inner">
+			<div class="webcontact">
+				<p>友情链接：</p>
+				<div>
+					<div id="wp_nav_w97">
+
+						<ul class="wp_nav"
+							data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
+
+							<li class="nav-item i1 ">
+								<a href="https://www.swufe.edu.cn/" title="西南财经大学"
+									target="_self"><span class="item-name">西南财经大学</span></a><i class="mark"
+									style="opacity: 1;"></i>
+							</li>
+							<li>/</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper footer" id="footer" style="background-color:rgba(56, 114, 97)">
+		<div class="inner">
+			<div class="foot">
+				<div>
+					<div id="wp_news_w09">
+						<table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+							<tbody>
+								<tr>
+									<td>
+										<div>通讯地址：西南财经大学xxxx</div>
+										<div>办公电话：xxx-xxxxx Email：xxxxx@swufe.edu.cn</div>
+										<div></div>
+										<div>Power by singularity v0.1 ©2022</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End||footer-->
+</body>
+
+</html>
